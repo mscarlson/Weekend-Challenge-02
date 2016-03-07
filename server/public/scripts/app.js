@@ -22,23 +22,25 @@ function nextKappa(){
   $(".user-profile" + nextProfile).hide();
   nextProfile++;
   $(".user-profile" + nextProfile).show();
-  if(nextProfile >= 23){
+  if(nextProfile > 22){
     nextProfile = 0;
+    $(".user-profile" + nextProfile).show();
 }
-// console.log(nextProfile);
+console.log(nextProfile);
 }
+
+
 
 function prevKappa(){
   $(".user-profile" + nextProfile).hide();
   nextProfile--;
   $(".user-profile" + nextProfile).show();
     if(nextProfile < 0){
-      nextProfile = 22;
+    nextProfile = 22;
+    $(".user-profile" + nextProfile).show();
   }
-  // $(".user-profile" + nextProfile).show();
+
 }
-
-
 
 function appendDom(data){
 
@@ -48,15 +50,22 @@ function appendDom(data){
 
     var $el = $(".kappa").children().last();
 
-    $el.append("<h1>" + "Name : " + data.kappa[i].name + "</h1>");
-    $el.append("<h2>" + "Hometown : " +  data.kappa[i].location + "</h2>");
-    $el.append("<h2>" + "Spirit Animal : " + data.kappa[i].spirit_animal + "</h2>");
-    $el.append("<p>" + "Shoutout! : " + "<q>" + data.kappa[i].shoutout + "</q>" + "</p>");
+    $el.append("<h1>" + "Name : " + data.kappa[i].name + "</>");
+    $el.append("<h2>" + "Hometown : " +  data.kappa[i].location + "</>");
+    $el.append("<h2>" + "Spirit Animal : " + data.kappa[i].spirit_animal + "</>");
+    $el.append("<q>" + data.kappa[i].shoutout +  "</>");
 
     counter++;
     }
+      $(".user-profile" + nextProfile).show();
 }
 
-function showIndex(){
-
+function createIndexNodes(array){
+  for(var i = 0; i < array.length; i++){
+    $(".index-container").append("<div class='index-point'></div>");
+    var $el = $(".index-container").children().last();
+    $el.data("index", i);
+    console.log($el.data());
+    elementArray.push($el);
+  }
 }
